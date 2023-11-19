@@ -1,0 +1,70 @@
+### READ tous les films
+GET http://localhost:3000/films
+
+### Read tous les films avec une variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films
+
+### Read tous les films order by titre (croissant)
+GET {{baseUrl}}/films?order=+title
+
+### Read tous les films triés par titre (décroissant)
+GET {{baseUrl}}/films?order=-title
+
+### Create un film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"film ajouté", 
+    "duration": 104,
+    "budget":104,
+    "link":"https://musclewiki.com/"
+}
+
+### Create un film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"film ajouté 2", 
+    "duration": 104,
+    "budget":104,
+    "link":"https://musclewiki.com/"
+}
+
+### Create un film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"film ajouté", 
+    "duration": 104,
+    "budget":104,
+    "link":"https://musclewiki.com/"
+}
+
+### Delete a movie
+DELETE {{baseUrl}}/films/2
+Content-Type: application/json
+
+### Patch a movie
+PATCH {{baseUrl}}/films/2
+Content-Type: application/json
+
+{
+    "title":"hdshdjs",
+    "duration":2,
+    "budget":30
+}
+
+### Put a movie
+PUT {{baseUrl}}/films/2
+Content-Type: application/json
+
+{
+    "title":"",
+    "duration":2000,
+    "budget":30, 
+    "link": "https://musclewiki.com/"
+}
