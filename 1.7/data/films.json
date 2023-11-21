@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "a",
+    "duration": 120,
+    "budget": 10000,
+    "link": "https://fr.wikipedia.org/wiki/Harry_Potter"
+  },
+  {
+    "id": 2,
+    "title": "b",
+    "duration": 160,
+    "budget": 20000,
+    "link": "https://fr.wikipedia.org/wiki/Harry_Potter"
+  },
+  {
+    "id": 3,
+    "title": "c",
+    "duration": 140,
+    "budget": 30000,
+    "link": "https://fr.wikipedia.org/wiki/Harry_Potter"
+  },
+  {
+    "id": 4,
+    "title": "film ajouté",
+    "duration": 104,
+    "budget": 104,
+    "link": "https://musclewiki.com/"
+  }
+]
