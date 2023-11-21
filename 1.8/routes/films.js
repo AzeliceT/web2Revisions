@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('node:path');
 const { serialize, parse } = require('../utils/json');
 
 const router = express.Router();
 
-const jsonDbPath = `${__dirname}/../data/films.json`;
+const jsonDbPath = path.join(__dirname,  '/../data/films.json');
 
 const catalogue = [
   {
@@ -44,18 +45,16 @@ router.get('/', (req, res) => {
   res.json(orderedCatalogue ?? films);
 });
 
-// eslint-disable-next-line consistent-return
 router.get('/:id', (req, res) => {
   const films = parse(jsonDbPath, catalogue);
 
-  const indexDuFilm = films.findIndex((film) => film.id === req.params.id);
+  const indexDuFilm = films.findIndex((film) => film.id === Number(req.params.id));
 
   if (indexDuFilm < 0) return res.sendStatus(404);
 
-  res.json(catalogue[indexDuFilm]);
+  return res.json(catalogue[indexDuFilm]);
 });
 
-// eslint-disable-next-line consistent-return
 router.post('/', (req, res) => {
   const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
   const duration = req?.body?.duration?.length !== 0 ? req.body.duration : undefined;
@@ -84,31 +83,33 @@ router.post('/', (req, res) => {
 
   serialize(jsonDbPath, films);
 
-  res.json(newFilm);
+  return res.json(newFilm);
 });
 
-// eslint-disable-next-line consistent-return
 router.delete('/:id', (req, res) => {
   const films = parse(jsonDbPath, catalogue);
 
-  const idFilmASupprimer = req.params.id;
+  const idFilmASupprimer =Number(req.params.id);
+  console.log("idFilmASupprimer : ",  idFilmASupprimer);
+
   const indexDuFilm = films.findIndex((film) => film.id === idFilmASupprimer);
 
   if (indexDuFilm < 0) {
     return res.sendStatus(404);
   }
 
+  console.log("INDEX FILM " , indexDuFilm);
   const tableauElementSupprimer = films.splice(indexDuFilm, 1);
 
   serialize(jsonDbPath, films);
 
-  res.json(tableauElementSupprimer[0]);
+  return res.json(tableauElementSupprimer[0]);
 });
 
 router.patch('/:id', (req, res) => {
   const films = parse(jsonDbPath, catalogue);
 
-  const idFilmAModifie = req.params.id;
+  const idFilmAModifie = Number(req.params.id);
   const indexDuFilm = films.findIndex((film) => film.id === idFilmAModifie);
 
   if (indexDuFilm < 0) {
@@ -145,7 +146,7 @@ router.patch('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const films = parse(jsonDbPath, catalogue);
 
-  const idFilmAModifie = req.params.id;
+  const idFilmAModifie = Number(req.params.id);
   const indexDuFilm = films.findIndex((film) => film.id === idFilmAModifie);
 
   if (indexDuFilm < 0) {
