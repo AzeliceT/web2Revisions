@@ -1,0 +1,72 @@
+### Read all texts
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/texts
+
+
+### Read By Level easy
+GET {{baseUrl}}/texts/level/easy
+
+### Read By Level hard
+GET {{baseUrl}}/texts/level/hard
+
+### Read By level wrong level
+
+GET {{baseUrl}}/texts/level/wrong
+
+### Read By Id
+GET {{baseUrl}}/texts/id/200
+
+### Read By no Id
+GET {{baseUrl}}/texts/id/2
+
+### Create a text
+POST {{baseUrl}}/texts
+Content-Type: application/json
+
+{
+    "content":"1",
+    "level":"easy"
+}
+
+### Create a text
+POST {{baseUrl}}/texts
+Content-Type: application/json
+
+{
+    "content":"2",
+    "level":"easy"
+}
+
+### Create a text
+POST {{baseUrl}}/texts
+Content-Type: application/json
+
+{
+    "content":"3",
+    "level":"easy"
+}
+### Create a text
+POST {{baseUrl}}/texts
+Content-Type: application/json
+
+{
+    "content":"4",
+    "level":"easy"
+}
+
+### Delete All
+DELETE {{baseUrl}}/texts
+Content-Type: application/json
+
+### Delete One
+DELETE {{baseUrl}}/texts/9
+Content-Type: application/json
+
+### Update All
+PUT {{baseUrl}}/texts/49
+Content-Type: application/json
+
+{
+    "content": "TEST UPDATE49", 
+    "level": "easy"
+}
