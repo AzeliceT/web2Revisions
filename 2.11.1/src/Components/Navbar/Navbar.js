@@ -1,6 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
 
+
+import HomePage from '../Pages/HomePage';
+import AddMoviePage from '../Pages/AddMoviePage';
+import ViewMoviePage from '../Pages/ViewMoviePage';
+
 /**
  * Render the Navbar which is styled by using Bootstrap
  * Each item in the Navbar is tightly coupled with the Router configuration :
@@ -9,11 +14,16 @@ import { Navbar as BootstrapNavbar } from 'bootstrap';
  */
 
 const Navbar = () => {
+  renderNavbar();
+  onNavBarClick();
+};
+
+function renderNavbar() {
   const navbarWrapper = document.querySelector('#navbarWrapper');
   const navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Add your brand here</a>
+          <a class="navbar-brand" href="#">e-Movies</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -31,10 +41,10 @@ const Navbar = () => {
                 <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
               </li>  
               <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/addMovie"> Add Movie </a>
+                <a class="nav-link" href="#" data-uri="/addMovie">Add Movie</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/viewMovie"> View Movie </a>
+                <a class="nav-link" href="#" data-uri="/viewMovie">View Movie</a>
               </li>                          
             </ul>
           </div>
@@ -42,6 +52,23 @@ const Navbar = () => {
       </nav>
   `;
   navbarWrapper.innerHTML = navbar;
+
 };
+
+function onNavBarClick() {
+  const navItems = document.querySelectorAll('.nav-link');
+
+  navItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      if (e.target.dataset.uri === '/') {
+        HomePage();
+      } else if (e.target.dataset.uri === '/addMovie') {
+        AddMoviePage();
+      } else if (e.target.dataset.uri === '/viewMovie') {
+        ViewMoviePage();
+      }
+    });
+  });
+}
 
 export default Navbar;

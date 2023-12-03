@@ -2,8 +2,11 @@ import routes from './routes';
 
 const Router = () => {
   onFrontendLoad();
+  // gère quand il y a un chargement du frontend (qd on fait un refresh ou bien la toute 1ère fois où on ouvre l'application)
   onNavBarClick();
+  // gère les clicks sur la navbar 
   onHistoryChange();
+  // quand on clique sur la flèche du browser à gauche ou à droite
 };
 
 function onNavBarClick() {

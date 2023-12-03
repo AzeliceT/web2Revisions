@@ -1,5 +1,4 @@
 import space from '../../img/img.jpg';
-
 import red from '../../img/red.png';
 
 const HomePage = () => {
